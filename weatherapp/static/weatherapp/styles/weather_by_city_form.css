@@ -1,0 +1,32 @@
+.form-container {
+    background: rgb(2, 2, 88);
+    height: 100vh;
+    padding: 8px;
+}
+
+.form-container h1,  .form-container button {
+    color: white;
+}
+
+.form-container h1 {
+    font-weight: normal;
+}
+.form-container button {
+    background: none;
+    padding: 8px;
+    border: 1px solid white;
+    border-radius: 8px;
+    transition: all linear 0.5s;
+}
+
+.form-container button:hover {
+    cursor:pointer;
+    background: rgb(37, 37, 90);
+}
+
+
+body {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    
+}

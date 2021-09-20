@@ -1,0 +1,35 @@
+{% load static %}
+<link href="{% static 'weatherapp/styles/weather_result.css'%}" rel='stylesheet' type='text/css'/>
+<div class='heading-info'>
+    <h1>{{weather.name}}, {{weather.sys.country}}</h1> 
+    <p>{{weather.dt|date:"l d F"}}</p>
+</div>
+<div class='weather-info'>
+    <div class='main-info'>
+        <div>
+            <img src='http://openweathermap.org/img/w/{{ weather.weather.0.icon }}.png'/>
+        </div>
+        <div>
+            <p class='temperature'>{{weather.main.temp|add:-273.15}}°</p>
+            <p class='weather-description'>{{ weather.weather.0.main}}</p>
+        </div> 
+    </div>
+    <div class='aditional-info'>
+                <p>{{weather.main.temp_max|add:-273.15}}°<br> High </p>
+                <p>{{weather.wind.speed}} mph<br> Wind </p>
+                <p>{{weather.sys.sunrise|date:'H:i'}}<br> Sunrise </p>
+                <p>{{weather.main.temp_min|add:-273.15}}°<br> Low </p>
+                <p>{{weather.main.humidity}} %<br> Rain </p>
+                <p>{{weather.sys.sunset|date:'H:i'}}<br>Sunset</p>
+    </div>  
+</div>
+<div class='forecast'>
+    {% for weather_hour in forecast %}
+    <div class='weather-hour'>
+        <p>{{weather_hour.dt_txt}}</p>
+        <img src='http://openweathermap.org/img/w/{{ weather_hour.weather.0.icon }}.png'/>
+        <p>{{weather_hour.main.temp|add:-273.15}}°</p>
+    </div>
+
+    {% endfor %}
+</div>

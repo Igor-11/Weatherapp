@@ -1,0 +1,10 @@
+{% load static %}
+<link href="{% static 'weatherapp/styles/weather_by_city_form.css'%}" rel='stylesheet' type='text/css'/>
+<div class='form-container'>
+    <h1>Weather in your city</h1>
+    <form action= "{% url 'weather_results' %}" method='POST'>
+        {% csrf_token %}
+        <input type='text' placeholder="Enter your city" name='city_name' required/>
+        <button>Search weather</button>
+    </form> 
+</div>
