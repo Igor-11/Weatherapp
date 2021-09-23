@@ -1,17 +1,22 @@
-.form-container {
+.form-history {
     background: rgb(2, 2, 49);
-    height: 100vh;
+    min-height: 100vh;
     padding: 8px;
 }
 
-.form-container h1,  .form-container button {
+.form-history h1,  .form-history button {
     color: white;
 }
 
-.form-container h1 {
+.form-history ul, .form-history p{
+    color: rgb(20, 211, 236);
+
+}
+
+.form-history h1 {
     font-weight: normal;
 }
-.form-container button {
+.form-history button {
     background: none;
     padding: 8px;
     border: 1px solid white;
@@ -19,17 +24,14 @@
     transition: all linear 0.5s;
 }
 
-.form-container button:hover {
+.form-history button:hover {
     cursor:pointer;
     background: rgb(20, 211, 236);
     color: rgb(2, 2, 49);
 }
 
+
 body {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;  
-}
-
-.form-container a {
-    color: rgb(20, 211, 236);
 }

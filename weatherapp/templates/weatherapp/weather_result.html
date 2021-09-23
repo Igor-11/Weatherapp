@@ -1,8 +1,14 @@
+{% extends 'weatherapp/base.html' %}
 {% load static %}
+{% block head %}
 <link href="{% static 'weatherapp/styles/weather_result.css'%}" rel='stylesheet' type='text/css'/>
+{% endblock head %}
+{% block content %}
 <div class='heading-info'>
     <h1>{{weather.name}}, {{weather.sys.country}}</h1> 
     <p>{{weather.dt|date:"l d F"}}</p>
+</div>
+<div id='map' width='100%' style='height: 300px;'>
 </div>
 <div class='weather-info'>
     <div class='main-info'>
@@ -30,6 +36,27 @@
         <img src='http://openweathermap.org/img/w/{{ weather_hour.weather.0.icon }}.png'/>
         <p>{{weather_hour.main.temp|add:-273.15}}°</p>
     </div>
-
     {% endfor %}
 </div>
+<script>
+    mapboxgl.accessToken = "{{ map_api_key }}";
+    var map = new mapboxgl.Map({
+     container: 'map',
+     style: 'mapbox://styles/mapbox/streets-v10',
+     center: ['{{ weather.coord.lon }}', '{{weather.coord.lat }}'],
+
+     zoom: 10
+    });
+    const marker = new mapboxgl.Marker({
+    draggable: true
+    }).setLngLat(['{{ weather.coord.lon }}', '{{weather.coord.lat }}'])
+    .addTo(map);
+    '{% for city in cities %}'
+    new mapboxgl.Marker({
+    color: '#FF0000'
+    }).setLngLat(['{{ city.longitude }}', '{{ city.latitude }}'])
+    .setPopup(new mapboxgl.Popup({className:'marker-popup'}).setHTML("{% include 'weatherapp/map_popup.html' with city=city %}"))
+    .addTo(map);
+    '{% endfor %}'
+</script>
+{% endblock content %}

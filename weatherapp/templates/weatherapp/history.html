@@ -1,0 +1,25 @@
+{% load static %}
+<link href="{% static 'weatherapp/styles/history.css'%}" rel='stylesheet' type='text/css'/>
+<div class='form-history'>
+    <h1>History</h1>
+    {% if cities|length %}
+    <ul>
+        {% for city in cities %}
+        <li>
+            <p>{{city.name}}</p>
+            <form action= "{% url 'delete_city' city.id %}" method='POST'>
+                {% csrf_token %}
+                <button>Delete city</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    <form action="{% url 'delete_history'%}" method='POST'>
+        {% csrf_token %}     
+        <button>Delete history</button>
+    </form>
+    {%else%}
+    <p>No cities in history</p>
+    {% endif %}
+    </div>
+

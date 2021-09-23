@@ -128,3 +128,5 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 WEATHER_API_KEY = 'b2a915ee2b50a6d4eae977fcd91b05b5'
+
+MAP_API_KEY = 'pk.eyJ1IjoiaWdvci1zaGV2Y2hlbmtvIiwiYSI6ImNrdHU3Mm92MjA3cXYzMm1tYWxid3R2OTYifQ.vJkBSnku322gVzx8I-YYZA'
